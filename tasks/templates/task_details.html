@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">{{ task.title }}</h2>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <strong>Description:</strong> {{ task.description }}
+            </li>
+            <li class="list-group-item">
+                <strong>Priority:</strong> {{ task.get_priority_display }}
+            </li>
+            <li class="list-group-item">
+                <strong>Status:</strong> {{ task.get_status_display }}
+            </li>
+            <li class="list-group-item">
+                <strong>Deadline:</strong> {{ task.deadline }}
+            </li>
+        </ul>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary me-2">Back</a>
+            <a href="{% url 'update_task' task.id %}" class="btn btn-primary">Update</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

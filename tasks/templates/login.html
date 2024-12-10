@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="alert{{ messages.tag }}">{{ message }}</div>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 60vh;">
+        <div class="card shadow-lg p-4" style="max-width: 400px; width: 100%;">
+            <h2 class="text-center mb-4">Welcome back</h2>
+            <form method="post" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary w-45">Login</button>
+                    <a href="{% url 'index' %}" class="btn btn-secondary w-45">Cancel</a>
+                </div>
+                <div>
+                     <p>Don't have an account?<a href="{% url 'register' %}">  Register here </a> </p>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
